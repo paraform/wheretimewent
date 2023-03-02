@@ -4,11 +4,11 @@ importers:
 
   .:
     specifiers:
-      eslint-config-custom: workspace:*
+      eslint-config-wtw: workspace:*
       prettier: latest
       turbo: latest
     devDependencies:
-      eslint-config-custom: link:packages/eslint-config-custom
+      eslint-config-wtw: link:packages/eslint-config-wtw
       prettier: 2.8.4
       turbo: 1.8.3
 
@@ -18,27 +18,27 @@ importers:
       '@types/node': ^17.0.12
       '@types/react': ^18.0.22
       '@types/react-dom': ^18.0.7
+      '@wtw/tsconfig': workspace:*
+      '@wtw/ui': workspace:*
       eslint: 7.32.0
-      eslint-config-custom: workspace:*
+      eslint-config-wtw: workspace:*
       next: ^13.1.1
       react: 18.2.0
       react-dom: 18.2.0
-      tsconfig: workspace:*
       typescript: ^4.5.3
-      ui: workspace:*
     dependencies:
+      '@wtw/ui': link:../../packages/ui
       next: 13.2.3_6m24vuloj5ihw4zc5lbsktc4fu
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-      ui: link:../../packages/ui
     devDependencies:
       '@babel/core': 7.21.0
       '@types/node': 17.0.45
       '@types/react': 18.0.28
       '@types/react-dom': 18.0.11
+      '@wtw/tsconfig': link:../../packages/tsconfig
       eslint: 7.32.0
-      eslint-config-custom: link:../../packages/eslint-config-custom
-      tsconfig: link:../../packages/tsconfig
+      eslint-config-wtw: link:../../packages/eslint-config-wtw
       typescript: 4.9.5
 
   apps/web:
@@ -47,30 +47,30 @@ importers:
       '@types/node': ^17.0.12
       '@types/react': ^18.0.22
       '@types/react-dom': ^18.0.7
+      '@wtw/tsconfig': workspace:*
+      '@wtw/ui': workspace:*
       eslint: 7.32.0
-      eslint-config-custom: workspace:*
+      eslint-config-wtw: workspace:*
       next: ^13.1.1
       react: 18.2.0
       react-dom: 18.2.0
-      tsconfig: workspace:*
       typescript: ^4.5.3
-      ui: workspace:*
     dependencies:
+      '@wtw/ui': link:../../packages/ui
       next: 13.2.3_6m24vuloj5ihw4zc5lbsktc4fu
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-      ui: link:../../packages/ui
     devDependencies:
       '@babel/core': 7.21.0
       '@types/node': 17.0.45
       '@types/react': 18.0.28
       '@types/react-dom': 18.0.11
+      '@wtw/tsconfig': link:../../packages/tsconfig
       eslint: 7.32.0
-      eslint-config-custom: link:../../packages/eslint-config-custom
-      tsconfig: link:../../packages/tsconfig
+      eslint-config-wtw: link:../../packages/eslint-config-wtw
       typescript: 4.9.5
 
-  packages/eslint-config-custom:
+  packages/eslint-config-wtw:
     specifiers:
       eslint: ^7.23.0
       eslint-config-next: 13.0.0
@@ -94,18 +94,18 @@ importers:
     specifiers:
       '@types/react': ^18.0.17
       '@types/react-dom': ^18.0.6
+      '@wtw/tsconfig': workspace:*
       eslint: ^7.32.0
-      eslint-config-custom: workspace:*
+      eslint-config-wtw: workspace:*
       react: ^18.2.0
-      tsconfig: workspace:*
       typescript: ^4.5.2
     devDependencies:
       '@types/react': 18.0.28
       '@types/react-dom': 18.0.11
+      '@wtw/tsconfig': link:../tsconfig
       eslint: 7.32.0
-      eslint-config-custom: link:../eslint-config-custom
+      eslint-config-wtw: link:../eslint-config-wtw
       react: 18.2.0
-      tsconfig: link:../tsconfig
       typescript: 4.9.5
 
 packages:
