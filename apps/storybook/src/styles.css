@@ -2,25 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --font-sans: "DM Sans";
-  }
-
-  .storybook {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-  }
-
-  [class="dark"] .storybook {
-    background-color: black;
-  }
+:root {
+  --font-sans: "DM Sans";
 }
-@layer components {
+
+.storybook {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
 }
-@layer utilities {
+
+[class="dark"] .storybook {
+  background-color: black;
 }
