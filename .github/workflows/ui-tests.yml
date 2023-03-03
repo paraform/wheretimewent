@@ -31,8 +31,8 @@ jobs:
 
       - name: Serve Storybook and run tests
         run: |
-          cd apps/storybook && npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
-            "npx http-server storybook-static --port 6006 --silent" \
+          npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
+            "npx http-server apps/storybook/storybook-static --port 6006 --silent" \
             "npx wait-on tcp:6006 && pnpm test --filter=storybook"
 
   # Run visual and composition tests with Chromatic
