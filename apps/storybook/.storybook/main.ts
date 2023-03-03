@@ -9,6 +9,7 @@ const config: StorybookConfig = {
     "@storybook/addon-links",
     "@storybook/addon-interactions",
     "@storybook/addon-postcss",
+    "@storybook/addon-a11y",
     {
       name: "@storybook/addon-essentials",
       options: { backgrounds: false },
@@ -17,9 +18,6 @@ const config: StorybookConfig = {
   framework: {
     name: "@storybook/react-vite",
     options: {},
-  },
-  docs: {
-    autodocs: "tag",
   },
   async viteFinal(config, { configType }) {
     return mergeConfig(config, {
