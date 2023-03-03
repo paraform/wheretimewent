@@ -1,0 +1,68 @@
+name: "UI Tests"
+
+on: push
+
+jobs:
+  # Run interaction and accessibility tests
+  interaction-and-accessibility:
+    # Operating System
+    runs-on: ubuntu-latest
+    # Turbo cache
+    env:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+    # Steps
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14.x"
+      - name: install pnpm@7.28.0
+        run: npm i -g pnpm@7.28.0
+      - name: Install dependencies
+        run: pnpm
+      - name: Install Playwright
+        run: npx playwright install --with-deps
+      - name: Build Storybook
+        run: pnpm build  --filter=storybook --quiet
+      - name: Serve Storybook and run tests
+        run: |
+          npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
+            "npx http-server storybook-static --port 6006 --silent" \
+            "npx wait-on tcp:6006 && pnpm test --filter=storybook"
+  # Run visual and composition tests with Chromatic
+  visual-and-composition:
+    # Operating System
+    runs-on: ubuntu-latest
+    env:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+    # Job steps
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: install pnpm@7.28.0
+        run: npm i -g pnpm@7.28.0
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install dependencies
+        run: pnpm install
+
+        # 👇 Adds Chromatic as a step in the workflow
+      - name: Publish to Chromatic
+        uses: chromaui/action@v1
+        # Chromatic GitHub Action options
+        with:
+          # 👇 Chromatic projectToken, refer to the manage page to obtain it.
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          onlyChanged: true
+          workingDir: apps/storybook
+          externals: "public/**"
+          exitOnceUploaded: true
+          buildScriptName: build
