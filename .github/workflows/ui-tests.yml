@@ -27,7 +27,7 @@ jobs:
         run: pnpm install
 
       - name: Build Storybook
-        run: pnpm build --filter=storybook --quiet
+        run: pnpm build --filter=storybook -- --quiet
 
       - name: Serve Storybook and run tests
         run: |
