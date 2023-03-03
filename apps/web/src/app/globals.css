@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    min-width: 360px;
+  }
+}
+@layer components {
+}
+@layer utilities {
+  .layout-center {
+    @apply flex items-center justify-center w-full h-full;
+  }
+}
