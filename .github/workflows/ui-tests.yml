@@ -27,14 +27,14 @@ jobs:
         run: pnpm install
 
       - name: Install CI utilities with pnpm
-        run: pnpm install http-server wait-on --filter=storybook
+        run: pnpm install http-server wait-on -w
 
       - name: Build Storybook
         run: pnpm build --filter=storybook -- --quiet
 
       - name: Serve Storybook in the background
         run: |
-          pnpm exec http-server storybook-static --port 6006 --silent &
+          pnpm exec http-server apps/storybook/storybook-static --port 6006 --silent &
           pnpm wait-on http://127.0.0.1:6006 --timeout 60 # Wait for the server to be ready
 
       - name: Run @storybook/test-runner
