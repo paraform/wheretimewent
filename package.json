@@ -16,9 +16,12 @@
     "test": "turbo run test"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.4.4",
+    "@commitlint/config-conventional": "^17.4.4",
     "@ianvs/prettier-plugin-sort-imports": "^3.7.1",
     "dotenv-cli": "^7.0.0",
     "eslint-config-wtw": "workspace:*",
+    "husky": "^8.0.3",
     "prettier": "^2.8.4",
     "prettier-plugin-tailwindcss": "^0.2.4",
     "turbo": "^1.8.3"
