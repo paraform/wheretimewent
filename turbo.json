@@ -10,7 +10,8 @@
       "outputs": []
     },
     "dev": {
-      "cache": false
+      "cache": false,
+      "persistent": true
     },
     "clean": {
       "cache": false
@@ -18,6 +19,22 @@
     "test": {},
     "set-up": {
       "cache": false
+    },
+    "docker:up": {
+      "cache": false
+    },
+    "db:generate": {
+      "cache": false
+    },
+    "db:push": {
+      "cache": false
+    },
+    "db:update": {
+      "cache": false
+    },
+    "db:studio": {
+      "cache": false
     }
-  }
+  },
+  "globalEnv": ["NODE_ENV", "DATABASE_URL"]
 }
