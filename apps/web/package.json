@@ -10,6 +10,7 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf .next"
   },
   "dependencies": {
+    "@clerk/nextjs": "^4.11.3",
     "@next/font": "^13.2.3",
     "@wtw/database": "workspace:*",
     "@wtw/ui": "workspace:*",
