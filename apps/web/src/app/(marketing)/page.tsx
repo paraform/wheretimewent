@@ -1,9 +1,11 @@
 import Link from "next/link"
 
-import { SignedIn, UserButton, currentUser } from "@clerk/nextjs/app-beta"
+import { currentUser } from "@clerk/nextjs/app-beta"
 
 import { prisma } from "@wtw/database"
-import { Button } from "@wtw/ui"
+import { Button } from "@wtw/ui/src/button"
+
+import { UserButton } from "./user-button"
 
 export default async function Page() {
   const user = await currentUser()
@@ -11,11 +13,7 @@ export default async function Page() {
 
   return (
     <div className="layout-center bg-white text-slate-900">
-      <div className="absolute top-4 right-4">
-        <SignedIn>
-          <UserButton />
-        </SignedIn>
-      </div>
+      <UserButton />
       <div className="flex flex-col gap-2">
         <Button>Click Me</Button>
         {user && <p>User: {user?.username}</p>}
