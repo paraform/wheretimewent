@@ -1,5 +1,3 @@
-"use client"
-
 import { UserButton as ClerkUserButton, SignedIn } from "@clerk/nextjs/app-beta"
 
 type UserButtonProps = {}
