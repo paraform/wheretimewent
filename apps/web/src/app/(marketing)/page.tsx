@@ -1,10 +1,10 @@
 import Link from "next/link"
 
 import { Button } from "@wtw/ui/src/button"
+
 import { UserButton } from "./user-button"
 
-export default  function Page() {
-
+export default function Page() {
   return (
     <div className="layout-center bg-white text-slate-900">
       <UserButton />

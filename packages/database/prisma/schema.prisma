@@ -11,11 +11,27 @@ datasource db {
   relationMode = "prisma"
 }
 
+// user model
+model User {
+  id        String   @id @default(cuid())
+  name      String?
+  email     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  tasks     Task[]
+
+  @@map(name: "users")
+}
+
+// task model
 model Task {
   id        String   @id @default(cuid())
   name      String?
   createdAt DateTime @default(now()) @map(name: "created_at")
   updatedAt DateTime @default(now()) @updatedAt @map(name: "updated_at")
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
 
+  @@index([userId])
   @@map(name: "tasks")
 }

@@ -6,23 +6,31 @@ To get started run `pnpm set-up` for more information check each workspace READM
 
 To develop all apps and packages, run the following command:
 
-``` bash
+```bash
 cd my-turborepo
 pnpm run dev
+```
+
+## Database
+
+To push changes to the database & generate the prisma client
+
+```bash
+npx dotenv -- turbo db:push db:generate
 ```
 
 ## Remote Caching
 
 By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel.
 
-``` bash
+```bash
 cd my-turborepo
 pnpm dlx turbo login
 ```
 
 Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your turborepo:
 
-``` bash
+```bash
 pnpm dlx turbo link
 ```
 
