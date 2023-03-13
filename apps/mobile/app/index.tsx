@@ -8,13 +8,38 @@ import {
   useUser,
 } from "@clerk/clerk-expo"
 import { useRouter } from "expo-router"
+import { useSafeAreaInsets } from "react-native-safe-area-context"
+
+import { tv } from "@wtw/ui"
 
 import { Button, Input, Text, View } from "../components"
 import { RootStackScreenProps } from "../types"
 import { log } from "../utils/logger"
 import { trpc } from "../utils/trpc"
 
-export default function Home(props: RootStackScreenProps<"MyProfile">) {
+const button = tv({
+  base: "border border-solid",
+  variants: {
+    kind: {
+      solid: "bg-black text-white border-black",
+      outlined: "bg-transparent text-black border-black",
+      ghost: "",
+      link: "",
+    },
+    size: {
+      sm: "px-3 py-2",
+      md: "px-4 py-4",
+      lg: "px-5 py-6",
+    },
+  },
+  defaultVariants: {
+    kind: "solid",
+    size: "md",
+  },
+})
+
+export default function Home(props: RootStackScreenProps<"Home">) {
+  const insets = useSafeAreaInsets()
   const router = useRouter()
   const [emailAddress, setEmailAddress] = React.useState("")
   const [password, setPassword] = React.useState("")
@@ -47,9 +72,17 @@ export default function Home(props: RootStackScreenProps<"MyProfile">) {
   }
 
   return (
-    <>
+    <View
+      style={{
+        // Paddings to handle safe area
+        paddingTop: insets.top,
+        paddingBottom: insets.bottom,
+        paddingLeft: insets.left,
+        paddingRight: insets.right,
+      }}
+    >
       <SignedIn>
-        <ProfileScreen {...props} />
+        <Dashboard {...props} />
       </SignedIn>
       <SignedOut>
         <View>
@@ -76,16 +109,16 @@ export default function Home(props: RootStackScreenProps<"MyProfile">) {
                 handleEmailSignInWithPress(emailAddress, password)
               }}
             >
-              <Text>Sign in</Text>
+              <Text className={button()}>Sign in</Text>
             </Button>
           </View>
         </View>
       </SignedOut>
-    </>
+    </View>
   )
 }
 
-function ProfileScreen({ navigation }: RootStackScreenProps<"MyProfile">) {
+function Dashboard({ navigation }: RootStackScreenProps<"Home">) {
   const { replace } = useRouter()
   const { getToken, signOut } = useAuth()
   const { user } = useUser()

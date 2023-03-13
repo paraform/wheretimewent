@@ -10,7 +10,7 @@ export type RootStackParamList = {
   Root: undefined
   SignUp: undefined
   SignIn: undefined
-  MyProfile: undefined
+  Home: undefined
   VerifyCode: undefined
 }
 

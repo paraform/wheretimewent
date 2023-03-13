@@ -33,11 +33,11 @@ export default function App() {
     <ClerkProvider frontendApi={frontendApi} tokenCache={tokenCache}>
       <TRPCProvider>
         <SafeAreaProvider>
-          {/*
-          The Stack component displays the current page.
-          It also allows you to configure your screens 
-        */}
-          <Stack />
+          <Stack
+            screenOptions={{
+              headerShown: false,
+            }}
+          />
           <StatusBar />
         </SafeAreaProvider>
       </TRPCProvider>
