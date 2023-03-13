@@ -16,7 +16,7 @@
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "clean": "turbo run clean && rm -rf node_modules",
-    "set-up": "cp .env.example .env.local && turbo run set-up",
+    "set-up": "turbo run set-up",
     "test": "turbo run test"
   },
   "devDependencies": {
