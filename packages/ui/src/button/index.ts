@@ -1,1 +1,2 @@
-export { Button, buttonVariants } from "./button"
+export { button } from "./button"
+export { Button } from "./button.react"

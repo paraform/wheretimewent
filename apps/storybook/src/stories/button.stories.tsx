@@ -17,8 +17,8 @@ type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
   args: {
-    variant: "default",
-    size: "default",
+    kind: "solid",
+    size: "md",
     children: "Click Here",
   },
   play: async ({ canvasElement }) => {
