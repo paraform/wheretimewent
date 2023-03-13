@@ -4,5 +4,9 @@
     { "pattern": "packages/*/" },
     { "pattern": "tests/*/" },
     { "pattern": "tooling/*/" }
+  ],
+  "tailwindCSS.experimental.classRegex": [
+    ["tv\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["cn\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
   ]
 }
