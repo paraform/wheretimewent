@@ -15,24 +15,41 @@ import { log } from "../utils/logger"
 import { trpc } from "../utils/trpc"
 
 export default function Home(props: RootStackScreenProps<"MyProfile">) {
+  const router = useRouter()
   const [emailAddress, setEmailAddress] = React.useState("")
   const [password, setPassword] = React.useState("")
 
   const { isLoaded, signIn, setSession } = useSignIn()
+
   if (!setSession) return null
   if (!isLoaded) return null
 
+  const redirectIfSignedIn = async () => {
+    if (signIn.status == "complete") {
+      router.push("/")
+    }
+  }
+
   const handleEmailSignInWithPress = async (emailAddress, password) => {
-    await signIn.create({
-      identifier: emailAddress,
-      password,
-    })
+    try {
+      const completeSignIn = await signIn.create({
+        identifier: emailAddress,
+        password,
+      })
+
+      await setSession(completeSignIn.createdSessionId)
+      await redirectIfSignedIn()
+    } catch (err: any) {
+      console.log("Error:> " + err?.errors ? JSON.stringify(err.errors) : err)
+      // log("Error:> " + err?.status || "")
+      // log("Error:> " + err?.errors ? JSON.stringify(err.errors) : err)
+    }
   }
 
   return (
     <>
       <SignedIn>
-        <MyProfileScreen {...props} />
+        <ProfileScreen {...props} />
       </SignedIn>
       <SignedOut>
         <View>
@@ -68,7 +85,7 @@ export default function Home(props: RootStackScreenProps<"MyProfile">) {
   )
 }
 
-function MyProfileScreen({ navigation }: RootStackScreenProps<"MyProfile">) {
+function ProfileScreen({ navigation }: RootStackScreenProps<"MyProfile">) {
   const { replace } = useRouter()
   const { getToken, signOut } = useAuth()
   const { user } = useUser()
