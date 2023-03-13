@@ -1,0 +1,9 @@
+{
+  "extends": "@wtw/tsconfig/expo",
+  "compilerOptions": {
+    "jsx": "react-native",
+    "types": ["nativewind/types"]
+  },
+  "include": ["app", "expo-plugins", "src", "app.config.ts", "index.js"],
+  "exclude": ["node_modules"]
+}

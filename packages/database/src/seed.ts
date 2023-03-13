@@ -1,8 +1,7 @@
-
 import { prisma } from "./client"
 
 // TODO: Create a proper seed file
-async function main() { }
+async function main() {}
 //   const date = new Date()
 
 //   // This is a dummy random session token
@@ -49,7 +48,7 @@ async function main() { }
 //   const mockTask = await prisma.task.create({
 //     data: {
 //       name: "Hello World! First Task",
-//       userId: 
+//       userId:
 //     },
 //   })
 //   console.log("Created mock task:", mockTask)

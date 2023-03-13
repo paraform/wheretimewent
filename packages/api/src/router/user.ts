@@ -1,10 +1,12 @@
 /* create user */
-import { router, protectedProcedure } from "../trpc";
-import { z } from "zod";
+
+import { z } from "zod"
+
+import { protectedProcedure, router } from "../trpc"
 
 export const userRouter = router({
   current: protectedProcedure.query(({ ctx }) => {
-    return ctx.prisma.user.findFirst({ where: { id: ctx?.auth?.user?.id } });
+    return ctx.prisma.user.findFirst({ where: { id: ctx.user.id } })
   }),
   create: protectedProcedure
     .input(
@@ -20,6 +22,6 @@ export const userRouter = router({
           email: input.email,
           id: input.id,
         },
-      });
+      })
     }),
-});
+})

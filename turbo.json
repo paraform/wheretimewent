@@ -4,7 +4,12 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build", "^db:generate"],
-      "outputs": ["dist/**", ".next/**", "storybook-static/**"]
+      "outputs": [
+        "dist/**",
+        ".next/**",
+        "storybook-static/**",
+        "node_modules/.cache/metro/**"
+      ]
     },
     "lint": {
       "outputs": []

@@ -1,0 +1,76 @@
+{
+  "name": "@wtw/mobile",
+  "version": "0.0.0",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "clean": "git clean -xdf .expo .turbo node_modules",
+    "dev": "expo start",
+    "dev:android": "expo start --android",
+    "dev:ios": "expo start --ios",
+    "lint": "eslint .",
+    "lint:fix": "pnpm lint --fix",
+    "eas-build-pre-install": "npm install --global pnpm@7.x",
+    "eas-build-post-install": "pnpm run -w build:mobile"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.18.9",
+    "@clerk/clerk-expo": "^0.10.16",
+    "@tanstack/react-query": "^4.26.1",
+    "@trpc/client": "^10.1.0",
+    "@trpc/react-query": "^10.14.0",
+    "@trpc/server": "^10.1.0",
+    "@types/react-native": "~0.70.6",
+    "@wtw/api": "workspace:*",
+    "@wtw/ui": "workspace:*",
+    "expo": "^48.0.4",
+    "expo-auth-session": "^4.0.3",
+    "expo-constants": "~14.2.1",
+    "expo-linking": "~4.0.1",
+    "expo-router": "^1.0.1",
+    "expo-secure-store": "^12.1.1",
+    "expo-splash-screen": "~0.18.1",
+    "expo-status-bar": "~1.4.4",
+    "nativewind": "^2.0.11",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-native": "0.71.3",
+    "react-native-safe-area-context": "4.5.0",
+    "react-native-screens": "~3.20.0",
+    "superjson": "1.9.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0",
+    "@babel/preset-env": "^7.20.0",
+    "@babel/runtime": "^7.20.0",
+    "@expo/config-plugins": "^6.0.0",
+    "@types/react": "^18.0.27",
+    "@wtw/tsconfig": "workspace:*",
+    "babel-plugin-transform-inline-environment-variables": "^0.4.4",
+    "eslint": "^8.34.0",
+    "eslint-config-wtw": "workspace:*",
+    "postcss": "^8.4.21",
+    "react-native-dotenv": "^3.4.8",
+    "tailwindcss": "^3.2.7",
+    "typescript": "^4.9.5"
+  },
+  "eslintConfig": {
+    "extends": "eslint-config-wtw",
+    "ignorePatterns": [
+      "node_modules",
+      "build",
+      ".expo",
+      ".expo-shared"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "*.js"
+        ],
+        "env": {
+          "node": true
+        }
+      }
+    ]
+  }
+}

@@ -13,7 +13,7 @@ function TaskList({ userId }: TaskListProps) {
   const [isError, setIsError] = React.useState(false)
   const inputRef = React.useRef<HTMLInputElement>(null)
 
-  const taskQuery = trpc.task.byUser.useQuery(userId)
+  const taskQuery = trpc.task.byUser.useQuery()
   const taskCreate = trpc.task.create.useMutation()
   const taskDelete = trpc.task.delete.useMutation()
 
@@ -21,10 +21,7 @@ function TaskList({ userId }: TaskListProps) {
     event.preventDefault()
     inputRef.current?.blur()
     try {
-      await taskCreate.mutateAsync({
-        name: name,
-        userId: userId,
-      })
+      await taskCreate.mutateAsync(name)
       // TODO: Add toast
       setIsError(false)
       setName("")

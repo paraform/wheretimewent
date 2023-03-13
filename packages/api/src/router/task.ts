@@ -27,16 +27,25 @@ export const taskRouter = router({
       select: defaultTaskSelect,
     })
   }),
-  byUser: protectedProcedure.input(z.string()).query(({ ctx }) => {
+  byUser: protectedProcedure.query(({ ctx }) => {
     return ctx.prisma.task.findMany({
-      where: { userId: ctx?.auth?.user?.id },
+      where: { userId: ctx.user.id },
       select: defaultTaskSelect,
     })
   }),
   create: protectedProcedure
-    .input(z.object({ userId: z.string(), name: z.string().min(1) }))
+    .input(z.string().min(1))
     .mutation(({ ctx, input }) => {
-      return ctx.prisma.task.create({ data: input })
+      return ctx.prisma.task.create({
+        data: {
+          name: input,
+          user: {
+            connect: {
+              id: ctx.user.id,
+            },
+          },
+        },
+      })
     }),
   delete: protectedProcedure
     .input(z.string().cuid())

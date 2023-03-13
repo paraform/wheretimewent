@@ -8,11 +8,15 @@
   ],
   "scripts": {
     "build": "turbo run build",
+    "build:mobile": "turbo build --filter=\"...{./apps/mobile}\"",
+    "build:web": "turbo build --filter=\"...{./apps/web}\"",
     "dev": "dotenv -- turbo run dev",
+    "dev:mobile": "dotenv -- turbo dev --filter=\"{./apps/mobile}...\"",
+    "dev:web": "dotenv -- turbo dev --filter=\"{./apps/web}...\"",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "clean": "turbo run clean && rm -rf node_modules",
-    "set-up": "turbo run set-up",
+    "set-up": "cp .env.example .env.local && turbo run set-up",
     "test": "turbo run test"
   },
   "devDependencies": {
@@ -25,6 +29,15 @@
     "prettier": "^2.8.4",
     "prettier-plugin-tailwindcss": "^0.2.4",
     "turbo": "^1.8.3"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "@babel/*",
+        "expo-modules-*",
+        "typescript"
+      ]
+    }
   },
   "engines": {
     "node": ">=14.0.0"

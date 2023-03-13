@@ -1,9 +1,9 @@
-import SignIn from "./sign-in"
+import SignUp from "./sign-up"
 
 export default function Page() {
   return (
     <div className="flex flex-col gap-2">
-      <SignIn />
+      <SignUp />
     </div>
   )
 }
