@@ -10,7 +10,7 @@
     "dev:ios": "expo start --ios",
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
-    "eas-build-pre-install": "npm install --global pnpm@7.x",
+    "eas-build-pre-install": "npm install --global pnpm@7.29.2",
     "eas-build-post-install": "pnpm run -w build:mobile"
   },
   "dependencies": {
